@@ -30,7 +30,7 @@
 //
 // tolerance
 
-int GCEM_TEST_NUMBER = 0;
+static int GCEM_TEST_NUMBER = 0;
 
 #ifndef TEST_VAL_TYPES
     #define TEST_VAL_TYPES long double
