@@ -23,6 +23,13 @@
 
 #include "gcem_tests.hpp"
 
+#include "monolithic_examples.h"
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main     gcem_test_inv_sqrt_main
+#endif
+
 template<typename T>
 constexpr
 T

@@ -20,6 +20,13 @@
 
 #include "gcem_tests.hpp"
 
+#include "monolithic_examples.h"
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main     gcem_test_is_odd_main
+#endif
+
 int main()
 {
     std::cout << "\n*** begin is_odd test ***\n" << std::endl;

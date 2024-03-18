@@ -22,6 +22,13 @@
 
 // test misc functions
 
+#include "monolithic_examples.h"
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main     gcem_test_misc_main
+#endif
+
 int main()
 {
     

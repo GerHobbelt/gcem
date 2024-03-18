@@ -24,6 +24,13 @@
 
 #include "gcem_tests.hpp"
 
+#include "monolithic_examples.h"
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main     gcem_test_factorial_main
+#endif
+
 int main()
 {
     print_begin("factorial");
