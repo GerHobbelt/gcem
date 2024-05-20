@@ -18,38 +18,34 @@
   ##
   ################################################################################*/
 
-#define TEST_PRINT_PRECISION_1 3
+#define TEST_PRINT_PRECISION_1 6
 #define TEST_PRINT_PRECISION_2 18
 
 #include "gcem_tests.hpp"
 
-#include "monolithic_examples.h"
-
-
-#if defined(BUILD_MONOLITHIC)
-#define main     gcem_test_cos_main
-#endif
-
 int main()
 {
-    print_begin("cos");
+    print_begin("fabsf");
+
+    // note: we use std::fabs instead of std::fabsf due to
+    // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79700
+
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs, 0.0f);
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs,-0.0f);
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs, 1.0f);
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs,-1.0f);
+
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs, std::numeric_limits<float>::lowest());
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs, std::numeric_limits<float>::min());
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs, std::numeric_limits<float>::max());
+
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs, std::numeric_limits<float>::quiet_NaN());
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs, std::numeric_limits<float>::infinity());
+    GCEM_TEST_COMPARE_VALS(gcem::fabsf,std::fabs, -std::numeric_limits<float>::infinity());
 
     //
 
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,-1.5L);
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,0.0L);
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,0.001L);
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,1.001L);
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,1.5L);
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,11.1L);
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,50.0L);
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,150.0L);
-
-    GCEM_TEST_COMPARE_VALS(gcem::cos,std::cos,TEST_NAN);
-
-    //
-
-    print_final("cos");
+    print_final("fabsf");
 
     return 0;
 }
