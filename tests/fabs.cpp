@@ -23,6 +23,10 @@
 
 #include "gcem_tests.hpp"
 
+#if defined(BUILD_MONOLITHIC)
+#define main    gcem_test_fabs_main
+#endif
+
 int main()
 {
     print_begin("fabs");
